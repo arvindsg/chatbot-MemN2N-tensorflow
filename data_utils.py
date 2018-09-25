@@ -112,11 +112,12 @@ def parse_dialogs_per_response(lines,candid_dic):
     context=[]
     u=None
     r=None
-    for line in lines:
+    nid=0
+    for line in lines:        
         line=line.strip()
         if line:
-            nid, line = line.split(' ', 1)
-            nid = int(nid)
+            _, line = line.split(' ', 1)
+            nid +=1
             if '\t' in line:
                 u, r = line.split('\t')
                 a = candid_dic[r]
@@ -139,6 +140,7 @@ def parse_dialogs_per_response(lines,candid_dic):
         else:
             # clear context
             context=[]
+            nid=0
     return data
 
 
